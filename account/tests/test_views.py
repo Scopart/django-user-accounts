@@ -80,7 +80,8 @@ class SignupViewTestCase(unittest.TestCase):
             "email": "someone@example.com",
         })
         view = SignupRedirectView(request=request, redirect_field_name="next_page")
-        self.assertEqual("/profile/", view.form_valid(form)["Location"])
+        form.is_valid()
+	self.assertEqual("/profile/", view.form_valid(form)["Location"])
 
 
 class LoginViewTestCase(unittest.TestCase):
